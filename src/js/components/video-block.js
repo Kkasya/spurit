@@ -1,0 +1,5 @@
+const VideoBlock = () => {
+
+};
+
+export {VideoBlock};
