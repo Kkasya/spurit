@@ -1,0 +1,51 @@
+.wrapper {
+  position: relative;
+  width: 136rem;
+  height: 70rem;
+
+  &__video-block {
+    background: url("/public/images/mask.png") top center no-repeat;
+    background-size: cover;
+    display: flex;
+    width: 136rem;
+    height: 70rem;
+    z-index: 0;
+  }
+
+  &:after {
+    content: '';
+    background: url("/public/images/video-block.png") bottom center no-repeat;
+    background-size: auto;
+    position: absolute;
+    width: 136rem;
+    height: 70rem;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  &__rectangle {
+    width: 10rem;
+    height: 0.9rem;
+    background-color: #FFDF37;
+    z-index: 2;
+  }
+}
+
+.wrapper__title {
+  color: #fff;
+  font-family: 'Lobster', cursive;
+  font-size: 1.9rem;
+  z-index: 2;
+  line-height: 3rem;
+  margin: 0 20%;
+  text-align: center;
+}

@@ -1,7 +1,12 @@
 import {VideoBlock} from "../components";
 
 const App = () => {
-	return document.createElement('div');
+
+	const hi = document.createElement('span');
+	hi.innerHTML = 'Hi';
+	const app = document.createElement('div');
+	app.append(VideoBlock());
+	return app;
 };
 
 export {App};
