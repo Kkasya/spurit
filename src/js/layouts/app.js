@@ -4,7 +4,8 @@ const App = () => {
 
 	const hi = document.createElement('span');
 	hi.innerHTML = 'Hi';
-	const app = document.createElement('div');
+	const app = document.createElement('main');
+	//app.className
 	app.append(VideoBlock());
 	return app;
 };

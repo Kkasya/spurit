@@ -5,31 +5,45 @@
 }
 
 html {
-  font-family: "Quentin", sans-serif;
+  font-family: "TiemposFine-Bold";
   font-size: 10px;
+}
+@media (max-width: 1024px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+main {
   background-color: #E5E5E5;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .wrapper {
   position: relative;
-  width: 136rem;
-  height: 70rem;
+  width: 81.7%;
+  max-height: 70rem;
 }
 .wrapper__video-block {
-  background: url(859cb270dcaf44af65fa0d8f61b9638d.png) top center no-repeat;
+  background: url(859cb270dcaf44af65fa0d8f61b9638d.png) bottom center no-repeat;
   background-size: cover;
   display: flex;
-  width: 136rem;
+  justify-content: center;
+  width: 100%;
   height: 70rem;
   z-index: 0;
 }
 .wrapper:after {
   content: "";
   background: url(ef736ce78acb21bd57da9df00a9776fe.png) bottom center no-repeat;
-  background-size: auto;
+  background-size: cover;
   position: absolute;
-  width: 136rem;
-  height: 70rem;
+  height: 100%;
+  width: 100%;
   top: 0;
   left: 0;
   z-index: 1;
@@ -37,16 +51,52 @@ html {
 
 .content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 12rem 0;
+  padding: 8rem 0;
+  width: 80rem;
 }
 .content__rectangle {
   width: 10rem;
   height: 0.9rem;
   background-color: #FFDF37;
   z-index: 2;
+}
+.content__title-common {
+  line-height: 6rem;
+  color: #FFFFFF;
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+  letter-spacing: 0.027rem;
+  font-size: 5rem;
+}
+.content__title-middle {
+  line-height: 6rem;
+  color: #FFFFFF;
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+  font-family: "Quentin";
+  letter-spacing: 0.038rem;
+  font-size: 7rem;
+  padding: 0 2rem;
+}
+.content__btn-play {
+  background: url(fb8bcecfb7abac22233ce71499839739.png) bottom center no-repeat;
+  width: 4.1rem;
+  height: 3rem;
+  outline: none;
+  border: none;
+  position: relative;
+  z-index: 2;
+}
+.content__btn-play:active {
+  border: 0.1rem solid #3a3A3a;
+  border-radius: 0.8rem;
 }
 
 .wrapper__title {

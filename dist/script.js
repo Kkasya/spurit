@@ -2,6 +2,43 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/common/constants.js":
+/*!************************************!*\
+  !*** ./src/js/common/constants.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TITLE1": () => (/* binding */ TITLE1),
+/* harmony export */   "TITLE2": () => (/* binding */ TITLE2),
+/* harmony export */   "TITLE3": () => (/* binding */ TITLE3)
+/* harmony export */ });
+var TITLE1 = 'Digestion is';
+var TITLE2 = 'the key';
+var TITLE3 = 'to overall wellness in Body, Mind and Spirit';
+
+
+/***/ }),
+
+/***/ "./src/js/common/index.js":
+/*!********************************!*\
+  !*** ./src/js/common/index.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TITLE1": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.TITLE1),
+/* harmony export */   "TITLE2": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.TITLE2),
+/* harmony export */   "TITLE3": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.TITLE3)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/js/common/constants.js");
+
+
+
+/***/ }),
+
 /***/ "./src/js/components/index.js":
 /*!************************************!*\
   !*** ./src/js/components/index.js ***!
@@ -58,12 +95,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "VideoContent": () => (/* binding */ VideoContent)
 /* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common */ "./src/js/common/index.js");
+
+
 var VideoContent = () => {
   var videoContent = document.createElement('div');
   videoContent.className = 'content';
   var rectangle = document.createElement('div');
   rectangle.className = 'content__rectangle';
-  videoContent.append(rectangle);
+  var title = document.createElement('p');
+  var titleStart = document.createElement('span');
+  titleStart.append(_common__WEBPACK_IMPORTED_MODULE_0__.TITLE1);
+  titleStart.className = 'content__title-common';
+  var titleEnd = document.createElement('span');
+  titleEnd.append(_common__WEBPACK_IMPORTED_MODULE_0__.TITLE3);
+  titleEnd.className = 'content__title-common';
+  var titleMiddle = document.createElement('span');
+  titleMiddle.append(_common__WEBPACK_IMPORTED_MODULE_0__.TITLE2);
+  titleMiddle.className = 'content__title-middle';
+  title.append(titleStart, titleMiddle, titleEnd);
+  var playBtn = document.createElement('button');
+  playBtn.className = 'content__btn-play';
+  videoContent.append(rectangle, title, playBtn);
   return videoContent;
 };
 
@@ -87,7 +140,8 @@ __webpack_require__.r(__webpack_exports__);
 var App = () => {
   var hi = document.createElement('span');
   hi.innerHTML = 'Hi';
-  var app = document.createElement('div');
+  var app = document.createElement('main'); //app.className
+
   app.append((0,_components__WEBPACK_IMPORTED_MODULE_0__.VideoBlock)());
   return app;
 };

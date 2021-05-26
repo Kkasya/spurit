@@ -1,3 +1,5 @@
+import {TITLE1, TITLE2, TITLE3} from "../common";
+
 const VideoContent = () => {
 	const videoContent = document.createElement('div');
 	videoContent.className = 'content';
@@ -5,7 +7,25 @@ const VideoContent = () => {
 	const rectangle = document.createElement('div');
 	rectangle.className = 'content__rectangle';
 
-	videoContent.append(rectangle);
+	const title = document.createElement('p');
+	const titleStart = document.createElement('span');
+	titleStart.append(TITLE1);
+	titleStart.className = 'content__title-common';
+
+	const titleEnd = document.createElement('span');
+	titleEnd.append(TITLE3);
+	titleEnd.className = 'content__title-common';
+
+	const titleMiddle = document.createElement('span');
+	titleMiddle.append(TITLE2);
+	titleMiddle.className = 'content__title-middle';
+
+	title.append(titleStart, titleMiddle, titleEnd);
+
+	const playBtn = document.createElement('button');
+	playBtn.className = 'content__btn-play';
+
+	videoContent.append(rectangle, title, playBtn);
 
 	return videoContent;
 };

@@ -1,0 +1,14 @@
+@mixin title {
+  line-height: 6rem;
+  color: $color-text;
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+}
+
+@mixin media-tablet {
+  @media (max-width: $tablet-width) {
+    font-size: $font-size-tablet;
+  }
+}
+
