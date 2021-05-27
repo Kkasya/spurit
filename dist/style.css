@@ -109,6 +109,12 @@ main {
   text-align: center;
 }
 
+.popup {
+  width: 100vw;
+  height: 100vh;
+  background-color: #E5E5E5;
+  z-index: 3;
+}
 .popup__frame {
   position: absolute;
   top: 15%;
