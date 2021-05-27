@@ -1,15 +1,27 @@
 .popup {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: $color-grey;
+  background: rgba($color-grey, 0.5);
   z-index: 3;
-
 
   &__frame {
     position: absolute;
-    top: 15%;
+    height: 70%;
+    width: 70%;
+    bottom: 15%;
     left: 15%;
-    z-index: 3;
+    z-index: 4;
+
+    @include media-tablet {
+      height: 50%;
+    }
+
+    @include media-mobile {
+      height: 30%;
+    }
   }
 }
 

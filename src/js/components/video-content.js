@@ -24,7 +24,9 @@ const VideoContent = (showPopup) => {
 
 	const playBtn = document.createElement('button');
 	playBtn.className = 'content__btn-play';
+	playBtn.setAttribute('tabindex', '0');
 	playBtn.addEventListener('click', showPopup);
+	playBtn.focus();
 
 	videoContent.append(rectangle, title, playBtn);
 
