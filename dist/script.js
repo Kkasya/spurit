@@ -45,6 +45,74 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/js/components/_popup.js":
+/*!*************************************!*\
+  !*** ./src/js/components/_popup.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Popup": () => (/* binding */ Popup)
+/* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common */ "./src/js/common/index.js");
+
+var count = _common__WEBPACK_IMPORTED_MODULE_0__.VIDEO.length;
+var frame = document.createElement('iframe');
+frame.width = '70%';
+frame.height = '70%';
+frame.className = 'popup__frame';
+var closeBtn = document.createElement('div');
+closeBtn.className = 'close-btn';
+
+class Popup {
+  constructor() {
+    this.isPopup = false;
+    this.isWork = true;
+    this.popup = document.createElement('div');
+    this.popup.className = 'popup hidden';
+
+    this.closeListener = () => this.changeIsPopup(false);
+
+    this.escListener = e => {
+      if (e.key === 'Escape') this.changeIsPopup(false);
+    };
+  }
+
+  changeIsPopup(isPopup) {
+    if (this.isWork) {
+      var popup = document.querySelector('.popup');
+
+      var _frame = document.querySelector('.popup__frame');
+
+      var numberVideo = Math.floor(Math.random() * count);
+      _frame.src = "".concat(_common__WEBPACK_IMPORTED_MODULE_0__.YOUTUBE).concat(_common__WEBPACK_IMPORTED_MODULE_0__.VIDEO[numberVideo]);
+
+      if (isPopup) {
+        popup.classList.remove('hidden');
+      } else popup.classList.add('hidden');
+    }
+  }
+
+  init() {
+    closeBtn.addEventListener('click', this.closeListener);
+    document.addEventListener('keydown', this.escListener);
+    this.popup.append(closeBtn, frame);
+    return this.popup;
+  }
+
+  destroy() {
+    this.isWork = false;
+    closeBtn.removeEventListener('click', this.closeListener);
+    document.removeEventListener('keydown', this.escListener);
+  }
+
+}
+
+
+
+/***/ }),
+
 /***/ "./src/js/components/index.js":
 /*!************************************!*\
   !*** ./src/js/components/index.js ***!
@@ -59,51 +127,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _video_block__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./video-block */ "./src/js/components/video-block.js");
 /* harmony import */ var _video_content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./video-content */ "./src/js/components/video-content.js");
-/* harmony import */ var _popup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./popup */ "./src/js/components/popup.js");
+/* harmony import */ var _popup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_popup */ "./src/js/components/_popup.js");
 
 
-
-
-
-/***/ }),
-
-/***/ "./src/js/components/popup.js":
-/*!************************************!*\
-  !*** ./src/js/components/popup.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Popup": () => (/* binding */ Popup)
-/* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common */ "./src/js/common/index.js");
-
-
-var Popup = changeIsPopup => {
-  document.addEventListener('keydown', e => {
-    e.preventDefault();
-    console.log(e.key);
-    if (e.key === 'Escape') changeIsPopup();
-  });
-  var popup = document.createElement('div');
-  popup.className = 'popup hidden';
-  var count = _common__WEBPACK_IMPORTED_MODULE_0__.VIDEO.length;
-  var numberVideo = Math.floor(Math.random() * count);
-  var frame = document.createElement('iframe');
-  frame.width = '70%';
-  frame.height = '70%';
-  frame.src = "".concat(_common__WEBPACK_IMPORTED_MODULE_0__.YOUTUBE).concat(_common__WEBPACK_IMPORTED_MODULE_0__.VIDEO[numberVideo]);
-  frame.className = 'popup__frame';
-  var closeBtn = document.createElement('div');
-  closeBtn.className = 'close-btn';
-  closeBtn.addEventListener('click', () => {
-    console.log('--');
-    return changeIsPopup();
-  });
-  popup.append(closeBtn, frame);
-  return popup;
-};
 
 
 
@@ -122,12 +148,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _video_content__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./video-content */ "./src/js/components/video-content.js");
 
 
-var VideoBlock = changeIsPopup => {
+var VideoBlock = showPopup => {
   var wrapper = document.createElement('div');
   wrapper.className = 'wrapper';
   var videoBlock = document.createElement('div');
   videoBlock.className = 'wrapper__video-block';
-  videoBlock.append((0,_video_content__WEBPACK_IMPORTED_MODULE_0__.VideoContent)(changeIsPopup));
+  videoBlock.append((0,_video_content__WEBPACK_IMPORTED_MODULE_0__.VideoContent)(showPopup));
   wrapper.append(videoBlock);
   return wrapper;
 };
@@ -149,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common */ "./src/js/common/index.js");
 
 
-var VideoContent = changeIsPopup => {
+var VideoContent = showPopup => {
   var videoContent = document.createElement('div');
   videoContent.className = 'content';
   var rectangle = document.createElement('div');
@@ -167,7 +193,7 @@ var VideoContent = changeIsPopup => {
   title.append(titleStart, titleMiddle, titleEnd);
   var playBtn = document.createElement('button');
   playBtn.className = 'content__btn-play';
-  playBtn.addEventListener('click', changeIsPopup);
+  playBtn.addEventListener('click', showPopup);
   videoContent.append(rectangle, title, playBtn);
   return videoContent;
 };
@@ -190,23 +216,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = () => {
-  var isPopup = false;
-  var hi = document.createElement('span');
-  hi.innerHTML = 'Hi';
+  var popupIns = new _components__WEBPACK_IMPORTED_MODULE_0__.Popup();
+  var popup = popupIns.init();
+
+  var showPopup = () => popupIns.changeIsPopup(true); //popupIns.destroy();
+
+
   var app = document.createElement('main');
-
-  var changeIsPopup = () => {
-    var popup = document.querySelector('.popup');
-    isPopup = !isPopup;
-    console.log(isPopup);
-
-    if (isPopup) {
-      popup.classList.remove('hidden');
-    } else popup.classList.add('hidden');
-  };
-
-  app.append((0,_components__WEBPACK_IMPORTED_MODULE_0__.Popup)(changeIsPopup));
-  app.append((0,_components__WEBPACK_IMPORTED_MODULE_0__.VideoBlock)(changeIsPopup));
+  app.append(popup, (0,_components__WEBPACK_IMPORTED_MODULE_0__.VideoBlock)(showPopup));
   return app;
 };
 
