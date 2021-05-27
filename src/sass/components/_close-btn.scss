@@ -1,0 +1,30 @@
+.close-btn {
+  position: absolute;
+  right: 11%;
+  top: 11%;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  z-index: 3;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:before, &:after {
+    content: ' ';
+    position: absolute;
+    left: 11%;
+    height: 33px;
+    width: 2px;
+    background-color: $color-text;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}

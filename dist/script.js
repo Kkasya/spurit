@@ -12,11 +12,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TITLE1": () => (/* binding */ TITLE1),
 /* harmony export */   "TITLE2": () => (/* binding */ TITLE2),
-/* harmony export */   "TITLE3": () => (/* binding */ TITLE3)
+/* harmony export */   "TITLE3": () => (/* binding */ TITLE3),
+/* harmony export */   "YOUTUBE": () => (/* binding */ YOUTUBE),
+/* harmony export */   "VIDEO": () => (/* binding */ VIDEO)
 /* harmony export */ });
 var TITLE1 = 'Digestion is';
 var TITLE2 = 'the key';
 var TITLE3 = 'to overall wellness in Body, Mind and Spirit';
+var YOUTUBE = 'https://www.youtube.com/embed/';
+var VIDEO = ['Bs3MUHB_o8U', '3aGSqasVPsI', 'u5edb5GVIHY', 'QlgZZkowIOc', 'SEvR78OhGtw', 'Em3GbqQTO80', 'mbA8EQZSjTk', 'XsbCDeCA9p0', 'I_aTbZcH8Do'];
 
 
 /***/ }),
@@ -31,7 +35,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "TITLE1": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.TITLE1),
 /* harmony export */   "TITLE2": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.TITLE2),
-/* harmony export */   "TITLE3": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.TITLE3)
+/* harmony export */   "TITLE3": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.TITLE3),
+/* harmony export */   "YOUTUBE": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.YOUTUBE),
+/* harmony export */   "VIDEO": () => (/* reexport safe */ _constants__WEBPACK_IMPORTED_MODULE_0__.VIDEO)
 /* harmony export */ });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/js/common/constants.js");
 
@@ -48,11 +54,56 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "VideoBlock": () => (/* reexport safe */ _video_block__WEBPACK_IMPORTED_MODULE_0__.VideoBlock),
-/* harmony export */   "VideoContent": () => (/* reexport safe */ _video_content__WEBPACK_IMPORTED_MODULE_1__.VideoContent)
+/* harmony export */   "VideoContent": () => (/* reexport safe */ _video_content__WEBPACK_IMPORTED_MODULE_1__.VideoContent),
+/* harmony export */   "Popup": () => (/* reexport safe */ _popup__WEBPACK_IMPORTED_MODULE_2__.Popup)
 /* harmony export */ });
 /* harmony import */ var _video_block__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./video-block */ "./src/js/components/video-block.js");
 /* harmony import */ var _video_content__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./video-content */ "./src/js/components/video-content.js");
+/* harmony import */ var _popup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./popup */ "./src/js/components/popup.js");
 
+
+
+
+
+/***/ }),
+
+/***/ "./src/js/components/popup.js":
+/*!************************************!*\
+  !*** ./src/js/components/popup.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Popup": () => (/* binding */ Popup)
+/* harmony export */ });
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common */ "./src/js/common/index.js");
+
+
+var Popup = changeIsPopup => {
+  document.addEventListener('keydown', e => {
+    e.preventDefault();
+    console.log(e.key);
+    if (e.key === 'Escape') changeIsPopup();
+  });
+  var popup = document.createElement('div');
+  popup.className = 'popup hidden';
+  var count = _common__WEBPACK_IMPORTED_MODULE_0__.VIDEO.length;
+  var numberVideo = Math.floor(Math.random() * count);
+  var frame = document.createElement('iframe');
+  frame.width = '70%';
+  frame.height = '70%';
+  frame.src = "".concat(_common__WEBPACK_IMPORTED_MODULE_0__.YOUTUBE).concat(_common__WEBPACK_IMPORTED_MODULE_0__.VIDEO[numberVideo]);
+  frame.className = 'popup__frame';
+  var closeBtn = document.createElement('div');
+  closeBtn.className = 'close-btn';
+  closeBtn.addEventListener('click', () => {
+    console.log('--');
+    return changeIsPopup();
+  });
+  popup.append(closeBtn, frame);
+  return popup;
+};
 
 
 
@@ -71,12 +122,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _video_content__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./video-content */ "./src/js/components/video-content.js");
 
 
-var VideoBlock = () => {
+var VideoBlock = changeIsPopup => {
   var wrapper = document.createElement('div');
   wrapper.className = 'wrapper';
   var videoBlock = document.createElement('div');
   videoBlock.className = 'wrapper__video-block';
-  videoBlock.append((0,_video_content__WEBPACK_IMPORTED_MODULE_0__.VideoContent)());
+  videoBlock.append((0,_video_content__WEBPACK_IMPORTED_MODULE_0__.VideoContent)(changeIsPopup));
   wrapper.append(videoBlock);
   return wrapper;
 };
@@ -98,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common */ "./src/js/common/index.js");
 
 
-var VideoContent = () => {
+var VideoContent = changeIsPopup => {
   var videoContent = document.createElement('div');
   videoContent.className = 'content';
   var rectangle = document.createElement('div');
@@ -116,6 +167,7 @@ var VideoContent = () => {
   title.append(titleStart, titleMiddle, titleEnd);
   var playBtn = document.createElement('button');
   playBtn.className = 'content__btn-play';
+  playBtn.addEventListener('click', changeIsPopup);
   videoContent.append(rectangle, title, playBtn);
   return videoContent;
 };
@@ -138,11 +190,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = () => {
+  var isPopup = false;
   var hi = document.createElement('span');
   hi.innerHTML = 'Hi';
-  var app = document.createElement('main'); //app.className
+  var app = document.createElement('main');
 
-  app.append((0,_components__WEBPACK_IMPORTED_MODULE_0__.VideoBlock)());
+  var changeIsPopup = () => {
+    var popup = document.querySelector('.popup');
+    isPopup = !isPopup;
+    console.log(isPopup);
+
+    if (isPopup) {
+      popup.classList.remove('hidden');
+    } else popup.classList.add('hidden');
+  };
+
+  app.append((0,_components__WEBPACK_IMPORTED_MODULE_0__.Popup)(changeIsPopup));
+  app.append((0,_components__WEBPACK_IMPORTED_MODULE_0__.VideoBlock)(changeIsPopup));
   return app;
 };
 

@@ -1,0 +1,14 @@
+.popup {
+  //width: 80%;
+  //height: 60%;
+  &__frame {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    z-index: 3;
+  }
+}
+
+.hidden {
+  display: none;
+}

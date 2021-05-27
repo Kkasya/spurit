@@ -1,6 +1,6 @@
 import {TITLE1, TITLE2, TITLE3} from "../common";
 
-const VideoContent = () => {
+const VideoContent = (changeIsPopup) => {
 	const videoContent = document.createElement('div');
 	videoContent.className = 'content';
 
@@ -24,6 +24,7 @@ const VideoContent = () => {
 
 	const playBtn = document.createElement('button');
 	playBtn.className = 'content__btn-play';
+	playBtn.addEventListener('click', changeIsPopup);
 
 	videoContent.append(rectangle, title, playBtn);
 

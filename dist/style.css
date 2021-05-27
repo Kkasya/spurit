@@ -109,4 +109,42 @@ main {
   text-align: center;
 }
 
+.popup__frame {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  z-index: 3;
+}
+
+.hidden {
+  display: none;
+}
+
+.close-btn {
+  position: absolute;
+  right: 11%;
+  top: 11%;
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+  z-index: 3;
+}
+.close-btn:hover {
+  opacity: 1;
+}
+.close-btn:before, .close-btn:after {
+  content: " ";
+  position: absolute;
+  left: 11%;
+  height: 33px;
+  width: 2px;
+  background-color: #FFFFFF;
+}
+.close-btn:before {
+  transform: rotate(45deg);
+}
+.close-btn:after {
+  transform: rotate(-45deg);
+}
+
 /*# sourceMappingURL=style.css.map*/

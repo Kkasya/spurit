@@ -1,3 +1,3 @@
-import {TITLE1, TITLE2, TITLE3} from "./constants";
+import {TITLE1, TITLE2, TITLE3, YOUTUBE, VIDEO} from "./constants";
 
-export {TITLE1, TITLE2, TITLE3};
+export {TITLE1, TITLE2, TITLE3, YOUTUBE, VIDEO};
