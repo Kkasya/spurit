@@ -17,7 +17,6 @@ class Popup {
 
     this.closeListener = () => this.changeIsPopup(false);
     this.escListener = (e) => {
-      console.log(e.target)
       if (e.key === 'Escape') this.changeIsPopup(false)
     };
   }

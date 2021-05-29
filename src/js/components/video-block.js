@@ -9,6 +9,7 @@ const VideoBlock = (showPopup) => {
 
   const background = document.createElement('img');
   background.src = 'public/images/video-block.png';
+  background.alt = 'food';
   background.setAttribute('data-src', 'public/images/video-block.png');
   background.className = 'background lazy';
 
