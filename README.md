@@ -1,4 +1,5 @@
 # spurit
+# deploy: https://spurit-kkasya.netlify.app/
 ## To connect the library to your project - include _popup.js, create a new instance and call init() on it. 
 ## Then hang event `() => popupIns.changeIsPopup(true)` on the button Play.
 ###  const popupIns = new Popup();
